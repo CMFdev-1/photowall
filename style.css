@@ -1,1 +1,11 @@
 
+  	input[type=text], textarea, select {
+            font: 17px Arial;
+            width: 50%;
+            border: 1px solid #000000;
+        }
+        input[type=button]{
+            font: Arial;
+            float: left;
+            cursor: pointer;
+        }
