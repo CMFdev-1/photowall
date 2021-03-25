@@ -1,0 +1,150 @@
+
+
+<head>
+    <title>Photowall - Photo Gallery Creator</title>
+    <style>
+
+
+    	input[type=text], textarea, select {
+            font: 17px Arial;
+            width: 50%;
+            border: 1px solid #000000;
+        }
+        input[type=button]{
+            font: Arial;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<img src="https://raw.githubusercontent.com/CMFdev-1/photowall/main/photowall%20logo.png" width="200px"><div style="font-family: 'Montserrat', sans-serif;"><a href="/photowall">Home</a></div><hr>
+
+        <div><input type="text" style="visibility: hidden;" id="header"/></div>
+        <br><br>
+
+        Image #1
+        <br>
+        <div><input type="text" id="image1" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #2
+        <br>
+        <div><input type="text" id="image2" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #3
+        <br>
+        <div><input type="text" id="image3" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #4
+        <br>
+        <div><input type="text" id="image4" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #5
+        <br>
+        <div><input type="text" id="image5" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #6
+        <br>
+        <div><input type="text" id="image6" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+        Image #7
+        <br>
+        <div><input type="text" id="image7" placeholder="Insert Image URL here" /></div>
+        <br><br>
+
+
+
+        <br>
+        <div><input type="text" style="visibility: hidden;" id="footer" placeholder="footer" /></div>
+
+        <div><input type="button" id="bt" value="Save data to file" onclick="saveFile()" /></div>
+    <br><br>
+<script>
+    let saveFile = () => {
+
+
+       const header = document.getElementById('header');
+
+
+    	const image1 = document.getElementById('image1');
+
+
+        const image2 = document.getElementById('image2');
+
+        const image3 = document.getElementById('image3');
+
+
+        const image4 = document.getElementById('image4');
+
+
+    	const image5 = document.getElementById('image5');
+
+
+        const image6 = document.getElementById('image6');
+
+
+        const image7 = document.getElementById('image7');
+
+
+
+
+
+        const footer = document.getElementById('footer');
+
+        // ---------------------------------------------------------------
+	   let data =
+
+
+            '<style>.GetStarted {box-shadow: 0px 1px 0px 0px #1c1b18;background-color: #0070BC;border-radius:4px;display:inline-block;cursor:pointer;color:#FFFFFF;font-family:"Montserrat", bold;font-size:14px;font-weight:bold;padding-left: 10px;padding-right: 10px;padding-top: 10px;padding-bottom: 10px;text-decoration:none;}</style><img src="https://raw.githubusercontent.com/CMFdev-1/photowall/main/photowall%20logo.png" width="200px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://cmfdev.cf/photowall" class="GetStarted" style="vertical-align: top;">Get Started</a><br><hr><center>' + header.value + '' +
+
+
+            '<img src="' + image1.value + '" width="40%">' +
+
+
+            '<img src="' + image2.value + '" width="40%">' +
+
+
+            '<img src="' + image3.value + '" width="40%">' +
+
+
+            '<img src="' + image4.value + '" width="40%">' +
+
+
+            '<img src="' + image5.value + '" width="40%">' +
+
+
+            '<img src="' + image6.value + '" width="40%">' +
+
+
+            '<img src="' + image7.value + '" width="40%">' +
+
+
+
+
+
+            '</center>' + footer.value;
+
+        // -----------------------------------------------------
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'Photowall_Gallery.txt';
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click();
+    }
+</script>
